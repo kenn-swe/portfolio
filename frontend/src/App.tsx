@@ -37,7 +37,8 @@ const test: ProjectDetails = {
   name: "Lorem Ipsum",
   description:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc euismod diam ut aliquam facilisis. Integer vel mauris a elit luctus mattis. Duis ex mauris, pellentesque ac urna non, feugiat gravida erat. Duis finibus eget lacus sit amet congue. Vivamus varius, metus at finibus egestas, erat massa convallis diam, vel maximus justo odio eu augue. Nullam commodo, sem faucibus accumsan efficitur, tortor nibh efficitur nibh, vitae sodales diam leo id turpis. Vestibulum malesuada rutrum enim et consectetur. Nullam et lacinia sapien. In lacus nisl, euismod placerat mattis at, sodales in justo. Praesent fringilla convallis rutrum. Etiam imperdiet ullamcorper neque, in sollicitudin mi pretium sed. Proin ut eros malesuada, viverra erat eget, faucibus metus. In hac habitasse platea dictumst. Donec sit amet nulla ac massa ultricies faucibus et at purus. Aenean at eros quis nunc fermentum consectetur.",
-  date: new Date(2025, 2), // month is 0-indexed
+  dateStart: new Date(2025, 2), // month is 0-indexed
+  dateEnd: new Date(),
   content: [
     <PreviewCard key="card-1" />,
     <PreviewCard key="card-2" />,
@@ -49,7 +50,8 @@ const test1: ProjectDetails = {
   name: "Lorem Ipsum",
   description:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc euismod diam ut aliquam facilisis. Integer vel mauris a elit luctus mattis. Duis ex mauris, pellentesque ac urna non, feugiat gravida erat. Duis finibus eget lacus sit amet congue. Vivamus varius, metus at finibus egestas, erat massa convallis diam, vel maximus justo odio eu augue. Nullam commodo, sem faucibus accumsan efficitur, tortor nibh efficitur nibh, vitae sodales diam leo id turpis. Vestibulum malesuada rutrum enim et consectetur. Nullam et lacinia sapien. In lacus nisl, euismod placerat mattis at, sodales in justo. Praesent fringilla convallis rutrum. Etiam imperdiet ullamcorper neque, in sollicitudin mi pretium sed. Proin ut eros malesuada, viverra erat eget, faucibus metus. In hac habitasse platea dictumst. Donec sit amet nulla ac massa ultricies faucibus et at purus. Aenean at eros quis nunc fermentum consectetur.",
-  date: new Date(2025, 1),
+  dateStart: new Date(2025, 1),
+  dateEnd: null,
   content: [
     <PreviewCard key="card-1" />,
     <PreviewCard key="card-2" />,

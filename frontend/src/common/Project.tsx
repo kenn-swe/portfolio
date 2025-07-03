@@ -5,20 +5,33 @@ import Typography from "@mui/joy/Typography";
 export interface ProjectDetails {
   name: string;
   description: string;
-  date: Date;
+  dateStart: Date;
+  dateEnd: Date | null;
   content: JSX.Element[];
 }
 
 export default function Project(props: ProjectDetails) {
+  const dateTodayString = new Date().toDateString();
+  const dateEndString = props.dateEnd
+    ? props.dateEnd.toDateString() === dateTodayString
+      ? "Current"
+      : props.dateEnd.toLocaleDateString("en-AU", {
+          year: "numeric",
+          month: "long",
+        })
+    : "N/A";
+  const period =
+    props.dateStart.toLocaleDateString("en-AU", {
+      year: "numeric",
+      month: "long",
+    }) +
+    " - " +
+    dateEndString;
+
   return (
     <>
       <Typography level="h1">{props.name}</Typography>
-      <Typography level="h3">
-        {props.date.toLocaleDateString("en-AU", {
-          year: "numeric",
-          month: "long",
-        })}
-      </Typography>
+      <Typography level="h3">{period}</Typography>
       <Typography level="body-md">{props.description}</Typography>
       <Grid container spacing={12} sx={{ py: 2, flexGrow: 1 }}>
         {props.content.map((content, index) => (
