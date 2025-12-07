@@ -1,17 +1,20 @@
-#!/usr/bin/zsh
+#!/bin/zsh
 
 # deploy.sh
 # Deploy the application.
 
+SCRIPT_DIR="${0:A:h}"
+
 setupPaths() {
-  mkdir -p docker/resources/tmp
+  mkdir -p "$SCRIPT_DIR/docker/resources/tmp"
 
   declare -g -A PATHS
-  PATHS["UTILS"]="./utils"
-  PATHS["DOCKER"]="./docker"
+  PATHS["UTILS"]="$SCRIPT_DIR/utils"
+  PATHS["DOCKER"]="$SCRIPT_DIR/docker"
   PATHS["RESOURCES"]="${PATHS["DOCKER"]}/resources"
   PATHS["TMP"]="${PATHS["RESOURCES"]}/tmp"
-  PATHS["FRONTEND"]="../frontend"
+  PATHS["FRONTEND"]="$SCRIPT_DIR/../frontend"
+  PATHS["GLOBAL_CONF"]="$SCRIPT_DIR/globals.conf"
 }
 
 sourceFiles() {
@@ -19,7 +22,7 @@ sourceFiles() {
     for file in "${PATHS["UTILS"]}"/*; do [ -r "$file" ] && . "$file"; done
   fi
 
-  . globals.conf
+  . "${PATHS["GLOBAL_CONF"]}"
 }
 
 parseArguments() {
@@ -96,7 +99,7 @@ main() {
 
 cleanup() {
   log "INFO" "Cleaning up temporary files."
-  cleanupDirectory "${PATHS["TMP"]}"
+  cleanupDirectory "${PATHS["RESOURCES"]}"
 }
 
 error() {
